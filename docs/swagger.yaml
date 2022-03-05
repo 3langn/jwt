@@ -1,0 +1,73 @@
+definitions:
+  dto.LoginDTO:
+    properties:
+      email:
+        example: 3langn@gmail.com
+        type: string
+      password:
+        example: password
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  dto.RegisterDTO:
+    properties:
+      email:
+        example: 3langn@gmail.com
+        type: string
+      name:
+        example: John Doe
+        type: string
+      password:
+        example: password
+        type: string
+    required:
+    - email
+    - name
+    - password
+    type: object
+info:
+  contact: {}
+paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: User login
+      parameters:
+      - description: Login
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Login
+      tags:
+      - Auth
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: User resgister
+      parameters:
+      - description: Register
+        in: body
+        name: register
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RegisterDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Register
+      tags:
+      - Auth
+swagger: "2.0"
